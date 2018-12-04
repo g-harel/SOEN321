@@ -20,7 +20,7 @@ resolved 77.7778% (of 279)
 #### MacOS
 
 ```
-cat FILE | base64 -D | ./index.js [ROOT]
+cat [FILE] | base64 -D | ./index.js [ROOT]
 ```
 
 #### Windows
