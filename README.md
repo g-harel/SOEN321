@@ -1,6 +1,12 @@
 # SOEN321
 
+Effectiveness analysis of DNS services with parental control features.
+
 ## Running
+
+<sub>Tested using `node >= v10`</sub>
+
+#### Linux
 
 ```
 cat [FILE] | base64 -d | ./index.js [ROOT]
@@ -11,7 +17,19 @@ $ cat ./domains/gambling.b64 | base64 -d | ./index.js 185.228.168.168
 resolved 77.7778% (of 279)
 ```
 
-#### Test Files
+#### MacOS
+
+```
+cat FILE | base64 -D | ./index.js [ROOT]
+```
+
+#### Windows
+
+```
+type [FILE] | base64 -d | node ./index.js [ROOT]
+```
+
+## Test Files
 
 ```
 domains
@@ -21,11 +39,20 @@ domains
 └─ sect.b64
 ```
 
+<sub>Domains lists are random subsets of data from [this blacklist](http://dsi.ut-capitole.fr/blacklists/index_en.php).</sub>
+
+Test files can be read in plaintext using the previous section's running instructions, but without piping the decoded base64 output into the testing script.
+
+```diff
+- cat [FILE] | base64 -d | ./index.js [ROOT]
++ cat [FILE] | base64 -d
+```
+
 ## Results
 
 ```
 + --------------------------------------- + ------------------------------- +
-|                 service                 |            categories           |
+|                 service                 |         percent resolved        |
 + ----------------------+---------------- + ----- + -------- + ----- + ---- +
 |          name         |     address     | adult | gambling | mixed | sect |
 + --------------------- + --------------- + ----- + -------- + ----- + ---- +
